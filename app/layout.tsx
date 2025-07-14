@@ -1,3 +1,4 @@
+import { CartProvider } from "@/context/CartContext";
 import Session from "@/lib/sessionProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -26,11 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Session>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
+        <CartProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            {children}
+          </body>
+        </CartProvider>
       </Session>
     </html>
   );
